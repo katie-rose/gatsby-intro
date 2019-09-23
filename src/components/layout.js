@@ -1,5 +1,6 @@
 import React from 'react';
 import { Global, css } from '@emotion/core';
+import Header from './header';
 
 const Layout = ({ children }) => (
   <>
@@ -9,7 +10,7 @@ const Layout = ({ children }) => (
           box-sizing: border-box;
           margin: 0;
         }
-
+        /* More info: https://bit.ly/2PsCnzk */
         * + * {
           margin-top: 1rem;
         }
@@ -17,15 +18,16 @@ const Layout = ({ children }) => (
         body {
           margin: 0;
           color: #555;
-          font-family: -apple-system, BlinkMacSystemFont, Roboto, Helvetica;
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+            Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+            'Segoe UI Symbol';
           font-size: 18px;
           line-height: 1.4;
+          /* remove margin for the main div that Gatsby mounts into */
+          > div {
+            margin-top: 0;
+          }
         }
-
-        > div {
-          margin-top: 0;
-        }
-
         h1,
         h2,
         h3,
@@ -34,23 +36,27 @@ const Layout = ({ children }) => (
         h6 {
           color: #222;
           line-height: 1.1;
-
           + * {
             margin-top: 0.5rem;
           }
         }
-
-        strong: {
+        strong {
           color: #222;
         }
-
         li {
           margin-top: 0.25rem;
         }
       `}
     />
-    <header></header>
-    <main>{children}</main>
+    <Header />
+    <main
+      css={css`
+        margin: 2rem auto;
+        max-width: 550px;
+      `}
+    >
+      {children}
+    </main>
   </>
 );
 
