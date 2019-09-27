@@ -14,6 +14,8 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve('./src/components/layout.js'),
         },
+        gatsbyRemarkPlugins: [{ resolve: 'gatsby-remark-images' }],
+        plugins: [{ resolve: 'gatsby-remark-images' }],
       },
     },
     {
@@ -28,6 +30,12 @@ module.exports = {
       options: {
         name: 'images',
         path: 'images',
+      },
+    },
+    {
+      resolve: 'gatsby-source-instagram',
+      options: {
+        username: 'gatsbyjs',
       },
     },
   ],
